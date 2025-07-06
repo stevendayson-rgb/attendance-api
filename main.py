@@ -7,15 +7,16 @@ app = FastAPI()
 def read_root():
     return {"message": "Attendance API is live!"}
 
-@app.get("/attendance")
-def list_attendance() -> List[Dict]:
-    # pull from your in-memory list, DB, etc.
-    # for now, just return an empty list or your stub data:
+# ← ADD THIS
+@app.get("/attendance", response_model=List[Dict])
+def list_attendance():
+    # TODO: replace this stub with real data fetch from your DB or in-memory store
     return []
 
 @app.post("/upload-log")
 async def upload_log(request: Request):
     data = await request.json()
     print("Received log:", data)
-    # here you’d insert into your DB or in-memory list
+    # TODO: insert into your database here
     return {"status": "success", "data": data}
+
